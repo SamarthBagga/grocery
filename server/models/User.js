@@ -1,13 +1,20 @@
 const mongoose = require('mongoose');
+const Schema=mongoose.Schema;
 
-const imageSchema = new mongoose.Schema(
-  {
-    filename: { type: String, required: true },
-    caption: { type: String },
+const userSchema = new mongoose.Schema({
+  number:{
+    type:String,
+    required:true
   },
-  { timestamps: true }
-);
+  link:{
+    type:String,
+    required:true
+  },
+  items:[{type:mongoose.Types.ObjectId,ref:"Item",required:true}],
 
-const Image = mongoose.model('Image', imageSchema);
 
-module.exports = Image;
+});
+
+export default mongoose.model("User",userSchema);
+
+
